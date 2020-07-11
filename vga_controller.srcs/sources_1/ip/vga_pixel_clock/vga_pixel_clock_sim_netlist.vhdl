@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Sat Jul 11 13:40:33 2020
+-- Date        : Sat Jul 11 13:57:20 2020
 -- Host        : HAWKEJO-LAPTOP running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               u:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/ip/vga_pixel_clock/vga_pixel_clock_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top vga_pixel_clock -prefix
+--               vga_pixel_clock_ vga_pixel_clock_sim_netlist.vhdl
 -- Design      : vga_pixel_clock
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -16,20 +16,18 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity vga_pixel_clock_vga_pixel_clock_clk_wiz is
   port (
-    clk_out1 : out STD_LOGIC;
+    vgaClk : out STD_LOGIC;
     resetn : in STD_LOGIC;
     clk100MHz : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of vga_pixel_clock_vga_pixel_clock_clk_wiz : entity is "vga_pixel_clock_clk_wiz";
 end vga_pixel_clock_vga_pixel_clock_clk_wiz;
 
 architecture STRUCTURE of vga_pixel_clock_vga_pixel_clock_clk_wiz is
   signal clk100MHz_vga_pixel_clock : STD_LOGIC;
-  signal clk_out1_vga_pixel_clock : STD_LOGIC;
   signal clkfbout_buf_vga_pixel_clock : STD_LOGIC;
   signal clkfbout_vga_pixel_clock : STD_LOGIC;
   signal reset_high : STD_LOGIC;
+  signal vgaClk_vga_pixel_clock : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKFBOUTB_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKFBSTOPPED_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED : STD_LOGIC;
@@ -74,8 +72,8 @@ clkin1_ibufg: unisim.vcomponents.IBUF
     );
 clkout1_buf: unisim.vcomponents.BUFG
      port map (
-      I => clk_out1_vga_pixel_clock,
-      O => clk_out1
+      I => vgaClk_vga_pixel_clock,
+      O => vgaClk
     );
 mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
     generic map(
@@ -137,7 +135,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       CLKIN2 => '0',
       CLKINSEL => '1',
       CLKINSTOPPED => NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED,
-      CLKOUT0 => clk_out1_vga_pixel_clock,
+      CLKOUT0 => vgaClk_vga_pixel_clock,
       CLKOUT0B => NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED,
       CLKOUT1 => NLW_mmcm_adv_inst_CLKOUT1_UNCONNECTED,
       CLKOUT1B => NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED,
@@ -178,7 +176,7 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity vga_pixel_clock is
   port (
-    clk_out1 : out STD_LOGIC;
+    vgaClk : out STD_LOGIC;
     resetn : in STD_LOGIC;
     clk100MHz : in STD_LOGIC
   );
@@ -191,7 +189,7 @@ begin
 inst: entity work.vga_pixel_clock_vga_pixel_clock_clk_wiz
      port map (
       clk100MHz => clk100MHz,
-      clk_out1 => clk_out1,
-      resetn => resetn
+      resetn => resetn,
+      vgaClk => vgaClk
     );
 end STRUCTURE;

@@ -56,7 +56,7 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// clk_out1__25.17301______0.000______50.0______319.783____246.739
+// __vgaClk__25.17301______0.000______50.0______319.783____246.739
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -70,7 +70,7 @@
 module vga_pixel_clock 
  (
   // Clock out ports
-  output        clk_out1,
+  output        vgaClk,
   // Status and control signals
   input         resetn,
  // Clock in ports
@@ -80,7 +80,7 @@ module vga_pixel_clock
   vga_pixel_clock_clk_wiz inst
   (
   // Clock out ports  
-  .clk_out1(clk_out1),
+  .vgaClk(vgaClk),
   // Status and control signals               
   .resetn(resetn), 
  // Clock in ports

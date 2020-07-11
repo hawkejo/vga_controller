@@ -6,8 +6,7 @@
 // Create Date: 07/11/2020 08:34:41 AM
 // Design Name: vga_controller
 // Module Name: vga_sync_gen
-// Project Name: Hydra CPU Architecture
-// Target Devices: Nexys 4 DDR, Basys 3 (any Artix 7 FPGA with a VGA plug)
+// Target Devices: Any FPGA with a VGA output and adequate clock.
 // Tool Versions: Vivado 2020.1
 // Description: A module designed to present the hsync and vsync signals for use
 //          to connect to a VGA display. It also presents the x and y resolution

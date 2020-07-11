@@ -56,7 +56,7 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// clk_out1__25.17301______0.000______50.0______319.783____246.739
+// __vgaClk__25.17301______0.000______50.0______319.783____246.739
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -69,7 +69,7 @@ module vga_pixel_clock_clk_wiz
 
  (// Clock in ports
   // Clock out ports
-  output        clk_out1,
+  output        vgaClk,
   // Status and control signals
   input         resetn,
   input         clk100MHz
@@ -92,7 +92,7 @@ wire clk_in2_vga_pixel_clock;
   //    * Unused inputs are tied off
   //    * Unused outputs are labeled unused
 
-  wire        clk_out1_vga_pixel_clock;
+  wire        vgaClk_vga_pixel_clock;
   wire        clk_out2_vga_pixel_clock;
   wire        clk_out3_vga_pixel_clock;
   wire        clk_out4_vga_pixel_clock;
@@ -140,7 +140,7 @@ wire clk_in2_vga_pixel_clock;
    (
     .CLKFBOUT            (clkfbout_vga_pixel_clock),
     .CLKFBOUTB           (clkfboutb_unused),
-    .CLKOUT0             (clk_out1_vga_pixel_clock),
+    .CLKOUT0             (vgaClk_vga_pixel_clock),
     .CLKOUT0B            (clkout0b_unused),
     .CLKOUT1             (clkout1_unused),
     .CLKOUT1B            (clkout1b_unused),
@@ -193,8 +193,8 @@ wire clk_in2_vga_pixel_clock;
 
 
   BUFG clkout1_buf
-   (.O   (clk_out1),
-    .I   (clk_out1_vga_pixel_clock));
+   (.O   (vgaClk),
+    .I   (vgaClk_vga_pixel_clock));
 
 
 
