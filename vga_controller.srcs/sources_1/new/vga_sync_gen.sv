@@ -12,7 +12,12 @@
 // Description: A module designed to present the hsync and vsync signals for use
 //          to connect to a VGA display. It also presents the x and y resolution
 //          addresses for use in addressing individual pixels. Parameters are used
+//          to allow for adjusting the design easily to work with other resolutions.
 //
+//          The Vivado Clocking Wizard in the IP Catalog is recommended to create
+//          the specified frequency.
+//
+//          Source: https://ktln2.org/2018/01/23/implementing-vga-in-verilog/
 // 
 // Dependencies: Clock signal adequate for the display signal. Variable based on
 //          specified resolution. Using default parameters for standard VGA, should

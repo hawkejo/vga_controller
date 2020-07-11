@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Sat Jul 11 12:41:13 2020
+# Process ID: 13568
+# Current directory: U:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.runs/vgaPixelClock_synth_1
+# Command line: vivado.exe -log vgaPixelClock.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source vgaPixelClock.tcl
+# Log file: U:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.runs/vgaPixelClock_synth_1/vgaPixelClock.vds
+# Journal file: U:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.runs/vgaPixelClock_synth_1\vivado.jou
+#-----------------------------------------------------------
+source vgaPixelClock.tcl -notrace

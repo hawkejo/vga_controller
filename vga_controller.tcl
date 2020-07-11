@@ -99,14 +99,13 @@ set_property -name "platform.board_id" -value "nexys4_ddr" -objects $obj
 set_property -name "sim.central_dir" -value "$proj_dir/${_xil_proj_name_}.ip_user_files" -objects $obj
 set_property -name "sim.ip.auto_export_scripts" -value "1" -objects $obj
 set_property -name "simulator_language" -value "Mixed" -objects $obj
-set_property -name "webtalk.activehdl_export_sim" -value "1" -objects $obj
-set_property -name "webtalk.ies_export_sim" -value "1" -objects $obj
-set_property -name "webtalk.modelsim_export_sim" -value "1" -objects $obj
-set_property -name "webtalk.questa_export_sim" -value "1" -objects $obj
-set_property -name "webtalk.riviera_export_sim" -value "1" -objects $obj
-set_property -name "webtalk.vcs_export_sim" -value "1" -objects $obj
-set_property -name "webtalk.xcelium_export_sim" -value "1" -objects $obj
-set_property -name "webtalk.xsim_export_sim" -value "1" -objects $obj
+set_property -name "webtalk.activehdl_export_sim" -value "2" -objects $obj
+set_property -name "webtalk.ies_export_sim" -value "2" -objects $obj
+set_property -name "webtalk.modelsim_export_sim" -value "2" -objects $obj
+set_property -name "webtalk.questa_export_sim" -value "2" -objects $obj
+set_property -name "webtalk.riviera_export_sim" -value "2" -objects $obj
+set_property -name "webtalk.vcs_export_sim" -value "2" -objects $obj
+set_property -name "webtalk.xsim_export_sim" -value "2" -objects $obj
 
 # Create 'sources_1' fileset (if not found)
 if {[string equal [get_filesets -quiet sources_1] ""]} {
@@ -144,6 +143,27 @@ set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 set obj [get_filesets sources_1]
 set_property -name "top" -value "vga_top" -objects $obj
 set_property -name "top_auto_set" -value "0" -objects $obj
+
+# Set 'sources_1' fileset object
+set obj [get_filesets sources_1]
+# Add local files from the original project (-no_copy_sources specified)
+set files [list \
+ [file normalize "${origin_dir}/vga_controller.srcs/sources_1/ip/vgaPixelClock/vgaPixelClock.xci" ]\
+]
+set added_files [add_files -fileset sources_1 $files]
+
+# Set 'sources_1' fileset file properties for remote files
+# None
+
+# Set 'sources_1' fileset file properties for local files
+set file "vgaPixelClock/vgaPixelClock.xci"
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "generate_files_for_reference" -value "0" -objects $file_obj
+set_property -name "registered_with_manager" -value "1" -objects $file_obj
+if { ![get_property "is_locked" $file_obj] } {
+  set_property -name "synth_checkpoint_mode" -value "Singular" -objects $file_obj
+}
+
 
 # Create 'constrs_1' fileset (if not found)
 if {[string equal [get_filesets -quiet constrs_1] ""]} {
