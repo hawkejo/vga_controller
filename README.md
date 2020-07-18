@@ -7,3 +7,5 @@ The correct clock for the desired resolution must be provided to the vga_sync_ge
 Github support for vivado is added through the scripts produced by Ricardo Barbedo in this repository: https://github.com/barbedo/vivado-git
 
 This design also uses board files sourced from Xilinx for use in Vivado. For more seamless integration, make sure they are installed as well.
+
+The master (I guess main now) branch will always contain the modules and Vivado files for the VGA resolution (640 x 480 @ 60 Hz)
