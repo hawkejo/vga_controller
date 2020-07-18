@@ -118,7 +118,7 @@ set obj [get_filesets sources_1]
 # Add local files from the original project (-no_copy_sources specified)
 set files [list \
  [file normalize "${origin_dir}/vga_controller.srcs/sources_1/ip/vga_pixel_clock/vga_pixel_clock.xci" ]\
- [file normalize "${origin_dir}/vga_controller.srcs/sources_1/new/vga_640x480.sv" ]\
+ [file normalize "${origin_dir}/vga_controller.srcs/sources_1/new/vga_800x600.sv" ]\
  [file normalize "${origin_dir}/vga_controller.srcs/sources_1/new/vga_sync_gen.sv" ]\
  [file normalize "${origin_dir}/vga_controller.srcs/sources_1/new/vga_top.sv" ]\
 ]
@@ -136,7 +136,7 @@ if { ![get_property "is_locked" $file_obj] } {
   set_property -name "synth_checkpoint_mode" -value "Singular" -objects $file_obj
 }
 
-set file "new/vga_640x480.sv"
+set file "new/vga_800x600.sv"
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
@@ -214,6 +214,7 @@ if { $obj != "" } {
 
 }
 set obj [get_runs synth_1]
+set_property -name "needs_refresh" -value "1" -objects $obj
 set_property -name "strategy" -value "Vivado Synthesis Defaults" -objects $obj
 
 # set the current synth run
@@ -427,6 +428,7 @@ set_property -name "options.warn_on_violation" -value "1" -objects $obj
 
 }
 set obj [get_runs impl_1]
+set_property -name "needs_refresh" -value "1" -objects $obj
 set_property -name "strategy" -value "Vivado Implementation Defaults" -objects $obj
 set_property -name "steps.write_bitstream.args.readback_file" -value "0" -objects $obj
 set_property -name "steps.write_bitstream.args.verbose" -value "0" -objects $obj

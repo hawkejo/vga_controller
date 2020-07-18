@@ -39,7 +39,7 @@ module vga_top(
         .clk100MHz(CLK100MHZ)
     );
     
-    vga_640x480 driver0(
+    vga_800x600 driver0(
         .pixel(videoSignal),
         .hsync(VGA_HS),
         .vsync(VGA_VS),

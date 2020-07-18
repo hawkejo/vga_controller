@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module vga_640x480(
+module vga_800x600(
     output reg [7:0] pixel,
     output hsync,
     output vsync,
