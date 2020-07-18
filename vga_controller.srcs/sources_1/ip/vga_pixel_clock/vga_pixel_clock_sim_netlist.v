@@ -1,10 +1,10 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-// Date        : Sat Jul 11 13:57:20 2020
+// Date        : Sat Jul 18 15:02:17 2020
 // Host        : HAWKEJO-LAPTOP running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim -rename_top vga_pixel_clock -prefix
-//               vga_pixel_clock_ vga_pixel_clock_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim
+//               u:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/ip/vga_pixel_clock/vga_pixel_clock_sim_netlist.v
 // Design      : vga_pixel_clock
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -31,6 +31,7 @@ module vga_pixel_clock
         .vgaClk(vgaClk));
 endmodule
 
+(* ORIG_REF_NAME = "vga_pixel_clock_clk_wiz" *) 
 module vga_pixel_clock_vga_pixel_clock_clk_wiz
    (vgaClk,
     resetn,
@@ -85,12 +86,12 @@ module vga_pixel_clock_vga_pixel_clock_clk_wiz
   (* BOX_TYPE = "PRIMITIVE" *) 
   MMCME2_ADV #(
     .BANDWIDTH("OPTIMIZED"),
-    .CLKFBOUT_MULT_F(36.375000),
+    .CLKFBOUT_MULT_F(10.000000),
     .CLKFBOUT_PHASE(0.000000),
     .CLKFBOUT_USE_FINE_PS("FALSE"),
     .CLKIN1_PERIOD(10.000000),
     .CLKIN2_PERIOD(0.000000),
-    .CLKOUT0_DIVIDE_F(36.125000),
+    .CLKOUT0_DIVIDE_F(25.000000),
     .CLKOUT0_DUTY_CYCLE(0.500000),
     .CLKOUT0_PHASE(0.000000),
     .CLKOUT0_USE_FINE_PS("FALSE"),
@@ -120,7 +121,7 @@ module vga_pixel_clock_vga_pixel_clock_clk_wiz
     .CLKOUT6_PHASE(0.000000),
     .CLKOUT6_USE_FINE_PS("FALSE"),
     .COMPENSATION("ZHOLD"),
-    .DIVCLK_DIVIDE(4),
+    .DIVCLK_DIVIDE(1),
     .IS_CLKINSEL_INVERTED(1'b0),
     .IS_PSEN_INVERTED(1'b0),
     .IS_PSINCDEC_INVERTED(1'b0),

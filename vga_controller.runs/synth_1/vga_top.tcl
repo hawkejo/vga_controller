@@ -71,6 +71,8 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 3
+set_param xicom.use_bs_reader 1
+set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
@@ -89,11 +91,11 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib -sv {
-  U:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/new/vga_640x480.sv
+  U:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/new/vga_800x600.sv
   U:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/new/vga_sync_gen.sv
   U:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/new/vga_top.sv
 }
-read_ip -quiet u:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/ip/vga_pixel_clock/vga_pixel_clock.xci
+read_ip -quiet U:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/ip/vga_pixel_clock/vga_pixel_clock.xci
 set_property used_in_implementation false [get_files -all u:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/ip/vga_pixel_clock/vga_pixel_clock_board.xdc]
 set_property used_in_implementation false [get_files -all u:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/ip/vga_pixel_clock/vga_pixel_clock.xdc]
 set_property used_in_implementation false [get_files -all u:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/ip/vga_pixel_clock/vga_pixel_clock_ooc.xdc]
@@ -110,8 +112,6 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 read_xdc U:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/constrs_1/new/nexys4ddr.xdc
 set_property used_in_implementation false [get_files U:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/constrs_1/new/nexys4ddr.xdc]
 
-read_xdc dont_touch.xdc
-set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 

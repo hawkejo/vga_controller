@@ -21,14 +21,14 @@
 
 
 module vga_800x600(
-    output reg [7:0] pixel,
+    output reg [2:0] pixel,
     output hsync,
     output vsync,
     input vgaClk
     );
     
     wire inDisplayArea;
-    wire [9:0] counterX;
+    wire [10:0] counterX;
     
     vga_sync_gen hvsync0(
         .hsync(hsync),
@@ -42,7 +42,7 @@ module vga_800x600(
     
     always_ff @ (posedge vgaClk) begin
         if (inDisplayArea)
-            pixel <= counterX[9:2];
+            pixel <= counterX[8:6];
         else
             pixel <= 8'h00;
     end

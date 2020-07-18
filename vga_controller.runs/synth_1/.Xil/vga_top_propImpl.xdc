@@ -4,7 +4,7 @@ current_instance ip_clk_gen0
 set_property src_info {type:SCOPED_XDC file:1 line:1 export:INPUT save:INPUT read:READ} [current_design]
 create_clock -period 10.000 [get_ports -no_traverse {}]
 set_property src_info {type:SCOPED_XDC file:1 line:4 export:INPUT save:INPUT read:READ} [current_design]
-create_generated_clock -source [get_ports clk100MHz] -edges {1 2 3} -edge_shift {0.000 14.863 29.725} [get_ports {}]
+create_generated_clock -source [get_ports clk100MHz] -edges {1 2 3} -edge_shift {0.000 7.500 15.000} [get_ports {}]
 current_instance
 set_property src_info {type:XDC file:2 line:6 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN E3    IOSTANDARD LVCMOS33 } [get_ports { CLK100MHZ }]; #IO_L12P_T1_MRCC_35 Sch=clk100mhz

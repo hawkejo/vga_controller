@@ -33,8 +33,8 @@
 module vga_sync_gen(
     output wire hsync, vsync,
     output reg inDisplayArea,
-    output reg [9:0] counterX,
-    output reg [8:0] counterY, 
+    output reg [10:0] counterX,
+    output reg [9:0] counterY, 
     input dispClk, // Needs to be 25.175 MHz for standard VGA, or close enough...
     input rst
     );
@@ -45,29 +45,29 @@ module vga_sync_gen(
     * Pixel clock: 25.175 MHz
     *
     * Horizontal timings
-    * Pixels:                     640
-    * Front Porch:                 16
-    * Sync Width:                  96
-    * Back Porch:                  48
-    * Total Pixels (Counter max): 800 (640 + 16 + 96 + 48)
+    * Pixels:                     800
+    * Front Porch:                 40
+    * Sync Width:                 128
+    * Back Porch:                  88
+    * Total Pixels (Counter max): 1056 (800 + 40 + 128 + 88)
     *
     * Vertical timings
-    * Pixels:                     480
-    * Front Porch:                 10
-    * Sync Width:                   2
-    * Back Porch:                  33
-    * Total Pixels (Counter max): 525 (480 + 10 + 2 + 33) 
+    * Pixels:                     600
+    * Front Porch:                  1
+    * Sync Width:                   4
+    * Back Porch:                  23
+    * Total Pixels (Counter max): 628 (600 + 1 + 4 + 23) 
     */
 
-    parameter VGA_H_RES = 640;
-    parameter VGA_H_FP  =  16;
-    parameter VGA_H_SW  =  96;
-    parameter VGA_H_BP  =  48;
+    parameter VGA_H_RES = 800;
+    parameter VGA_H_FP  =  40;
+    parameter VGA_H_SW  = 128;
+    parameter VGA_H_BP  =  88;
     
-    parameter VGA_V_RES = 480;
-    parameter VGA_V_FP  =  10;
-    parameter VGA_V_SW  =   2;
-    parameter VGA_V_BP  =  33;
+    parameter VGA_V_RES = 600;
+    parameter VGA_V_FP  =   1;
+    parameter VGA_V_SW  =   4;
+    parameter VGA_V_BP  =  23;
     
     parameter VGA_H_PXL = VGA_H_RES + VGA_H_FP + VGA_H_SW + VGA_H_BP;
     parameter VGA_V_PXL = VGA_V_RES + VGA_V_FP + VGA_V_SW + VGA_V_BP;

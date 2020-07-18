@@ -114,6 +114,7 @@ proc step_failed { step } {
   close $ch
 }
 
+set_msg_config -id {Common 17-41} -limit 10000000
 
 OPTRACE "Implementation" START { ROLLUP_1 }
 OPTRACE "Phase: Init Design" START { ROLLUP_AUTO }
@@ -122,6 +123,7 @@ set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
   set_param chipscope.maxJobs 3
+  set_param xicom.use_bs_reader 1
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7a100tcsg324-1
   set_property board_part digilentinc.com:nexys4_ddr:part0:1.1 [current_project]
@@ -137,7 +139,7 @@ OPTRACE "set parameters" START { }
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
   add_files -quiet U:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.runs/synth_1/vga_top.dcp
-  read_ip -quiet u:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/ip/vga_pixel_clock/vga_pixel_clock.xci
+  read_ip -quiet U:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/ip/vga_pixel_clock/vga_pixel_clock.xci
 OPTRACE "read constraints: implementation" START { }
   read_xdc U:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/constrs_1/new/nexys4ddr.xdc
 OPTRACE "read constraints: implementation" END { }

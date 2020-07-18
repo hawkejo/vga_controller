@@ -31,7 +31,7 @@ module vga_top(
     );
     
     wire dispClk;
-    wire [7:0] videoSignal;
+    wire [2:0] videoSignal;
     
     vga_pixel_clock ip_clk_gen0(
         .vgaClk(dispClk),
@@ -46,8 +46,8 @@ module vga_top(
         .vgaClk(dispClk)
     );
     
-    assign VGA_R = {videoSignal[7], videoSignal[6], videoSignal[5], videoSignal[5]};
-    assign VGA_G = {videoSignal[4], videoSignal[3], videoSignal[2], videoSignal[2]};
-    assign VGA_B = {videoSignal[1], videoSignal[1], videoSignal[0], videoSignal[0]};
+    assign VGA_R = {4{videoSignal[0]}};
+    assign VGA_G = {4{videoSignal[1]}};
+    assign VGA_B = {4{videoSignal[2]}};
     
 endmodule
