@@ -6,4 +6,6 @@ The correct clock for the desired resolution must be provided to the vga_sync_ge
 
 Github support for vivado is added through the scripts produced by Ricardo Barbedo in this repository: https://github.com/barbedo/vivado-git
 
+Follow the directions in that repository to properly clone the project.
+
 This design also uses board files sourced from Xilinx for use in Vivado. For more seamless integration, make sure they are installed as well.

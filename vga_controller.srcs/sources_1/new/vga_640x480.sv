@@ -21,30 +21,74 @@
 
 
 module vga_640x480(
-    output reg [7:0] pixel,
+    output reg [11:0] xCoord, yCoord,
     output hsync,
     output vsync,
     input vgaClk
     );
     
-    wire inDisplayArea;
-    wire [9:0] counterX;
+    /*
+    * Standard VGA (640 x 480)
+    *
+    * Pixel clock: 25.175 MHz
+    *
+    * Horizontal timings
+    * Pixels:                     640
+    * Front Porch:                 16
+    * Sync Width:                  96
+    * Back Porch:                  48
+    * Total Pixels (Counter max): 800 (640 + 16 + 96 + 48)
+    *
+    * Vertical timings
+    * Pixels:                     480
+    * Front Porch:                 10
+    * Sync Width:                   2
+    * Back Porch:                  33
+    * Total Pixels (Counter max): 525 (480 + 10 + 2 + 33) 
+    */
+    parameter VGA_H_RES = 640;
+    parameter VGA_H_FP  =  16;
+    parameter VGA_H_SW  =  96;
+    parameter VGA_H_BP  =  48;
     
-    vga_sync_gen hvsync0(
-        .hsync(hsync),
-        .vsync(vsync),
-        .inDisplayArea(inDisplayArea),
-        .counterX(counterX),
-        .counterY(),
-        .dispClk(vgaClk),
-        .rst(1'b1)
-    );
+    parameter VGA_V_RES = 480;
+    parameter VGA_V_FP  =  10;
+    parameter VGA_V_SW  =   2;
+    parameter VGA_V_BP  =  33;
+        
+    wire inDisplayArea;
+    wire [11:0] counterX, counterY;
+    
+    vga_sync_gen 
+        #(
+            .VGA_H_RES(VGA_H_RES),
+            .VGA_H_FP(VGA_H_FP),
+            .VGA_H_SW(VGA_H_SW),
+            .VGA_H_BP(VGA_H_BP),
+            .VGA_V_RES(VGA_V_RES),
+            .VGA_V_FP(VGA_V_FP),
+            .VGA_V_SW(VGA_V_SW),
+            .VGA_V_BP(VGA_V_BP)
+        )
+        hvsync0(
+            .hsync(hsync),
+            .vsync(vsync),
+            .inDisplayArea(inDisplayArea),
+            .counterX(counterX),
+            .counterY(counterY),
+            .dispClk(vgaClk),
+            .rst(1'b1)
+        );
     
     always_ff @ (posedge vgaClk) begin
-        if (inDisplayArea)
-            pixel <= counterX[9:2];
-        else
-            pixel <= 8'h00;
+        if (inDisplayArea) begin
+            xCoord <= counterX;
+            yCoord <= counterY;
+        end
+        else begin
+            xCoord <= 12'h00;
+            yCoord <= 12'h00;
+        end
     end
     
 endmodule
