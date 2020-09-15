@@ -1,6 +1,6 @@
 # vga_controller
 
-Implements a basic VGA controller design running at the VGA resolution (800x480p60). The key module is the vga_sync_gen which produces the hsync and vsync signals. It also produces the addresses for addressing individual pixels.
+Implements a basic VGA controller design running at the VGA resolution (800x600p60). The key module is the vga_sync_gen which produces the hsync and vsync signals. It also produces the addresses for addressing individual pixels.
 
 The correct clock for the desired resolution must be provided to the vga_sync_gen which is provided by the vga_pixel_clock ip provided by the Vivado Clocking Wizard in this implementation.
 
