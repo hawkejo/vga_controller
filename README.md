@@ -9,3 +9,5 @@ Github support for vivado is added through the scripts produced by Ricardo Barbe
 Follow the directions in that repository to properly clone the project.
 
 This design also uses board files sourced from Xilinx for use in Vivado. For more seamless integration, make sure they are installed as well.
+
+The master (I guess main now) branch will always contain the modules and Vivado files for a variable VGA controller (changable resolutions).
