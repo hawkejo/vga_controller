@@ -70,7 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 3
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
@@ -93,7 +92,7 @@ read_verilog -library xil_defaultlib -sv {
   U:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/new/vga_sync_gen.sv
   U:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/new/vga_top.sv
 }
-read_ip -quiet u:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/ip/vga_pixel_clock/vga_pixel_clock.xci
+read_ip -quiet U:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/ip/vga_pixel_clock/vga_pixel_clock.xci
 set_property used_in_implementation false [get_files -all u:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/ip/vga_pixel_clock/vga_pixel_clock_board.xdc]
 set_property used_in_implementation false [get_files -all u:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/ip/vga_pixel_clock/vga_pixel_clock.xdc]
 set_property used_in_implementation false [get_files -all u:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/ip/vga_pixel_clock/vga_pixel_clock_ooc.xdc]

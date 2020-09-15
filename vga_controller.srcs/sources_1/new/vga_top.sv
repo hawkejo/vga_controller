@@ -30,24 +30,17 @@ module vga_top(
     input CLK100MHZ
     );
     
-    wire dispClk;
-    wire [7:0] videoSignal;
+    wire [11:0] xCoord;
     
-    vga_pixel_clock ip_clk_gen0(
-        .vgaClk(dispClk),
-        .resetn(1'b1),
+    vga_clock_sel sel0(
+        .hs(VGA_HS),
+        .vs(VGA_VS),
+        .xCoord(xCoord),
         .clk100MHz(CLK100MHZ)
     );
     
-    vga_640x480 driver0(
-        .pixel(videoSignal),
-        .hsync(VGA_HS),
-        .vsync(VGA_VS),
-        .vgaClk(dispClk)
-    );
-    
-    assign VGA_R = {videoSignal[7], videoSignal[6], videoSignal[5], videoSignal[5]};
-    assign VGA_G = {videoSignal[4], videoSignal[3], videoSignal[2], videoSignal[2]};
-    assign VGA_B = {videoSignal[1], videoSignal[1], videoSignal[0], videoSignal[0]};
+    assign VGA_R = {xCoord[9],  xCoord[6], xCoord[3], xCoord[0]};
+    assign VGA_G = {xCoord[10], xCoord[7], xCoord[4], xCoord[1]};
+    assign VGA_B = {xCoord[11], xCoord[8], xCoord[5], xCoord[2]};
     
 endmodule

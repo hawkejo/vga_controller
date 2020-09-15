@@ -33,8 +33,8 @@
 module vga_sync_gen(
     output wire hsync, vsync,
     output reg inDisplayArea,
-    output reg [9:0] counterX,
-    output reg [8:0] counterY, 
+    output reg [11:0] counterX,
+    output reg [11:0] counterY, 
     input dispClk, // Needs to be 25.175 MHz for standard VGA, or close enough...
     input rst
     );
