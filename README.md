@@ -8,4 +8,4 @@ Github support for vivado is added through the scripts produced by Ricardo Barbe
 
 This design also uses board files sourced from Xilinx for use in Vivado. For more seamless integration, make sure they are installed as well.
 
-The master (I guess main now) branch will always contain the modules and Vivado files for the VGA resolution (640 x 480 @ 60 Hz)
+The master (I guess main now) branch will always contain the modules and Vivado files for a variable VGA controller (changable resolutions).
