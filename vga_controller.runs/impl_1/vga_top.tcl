@@ -137,7 +137,7 @@ OPTRACE "set parameters" START { }
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
   add_files -quiet U:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.runs/synth_1/vga_top.dcp
-  read_ip -quiet u:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/ip/vga_pixel_clock/vga_pixel_clock.xci
+  read_ip -quiet U:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/sources_1/ip/vga_pixel_clock/vga_pixel_clock.xci
 OPTRACE "read constraints: implementation" START { }
   read_xdc U:/Users/hawkejo/Documents/Git/vga_controller/vga_controller.srcs/constrs_1/new/nexys4ddr.xdc
 OPTRACE "read constraints: implementation" END { }
