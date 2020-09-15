@@ -1,9 +1,9 @@
 #*****************************************************************************************
-# Vivado (TM) v2020.1 (64-bit)
+# Vivado (TM) v2020.1.1 (64-bit)
 #
 # vga_controller.tcl: Tcl script for re-creating project 'vga_controller'
 #
-# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# IP Build 2956692 on Thu Aug  6 01:41:30 MDT 2020
 #
 # This file contains the Vivado Tcl commands for re-creating the project to the state*
 # when this script was generated. In order to re-create the project, please source this
@@ -105,7 +105,6 @@ set_property -name "webtalk.modelsim_export_sim" -value "7" -objects $obj
 set_property -name "webtalk.questa_export_sim" -value "7" -objects $obj
 set_property -name "webtalk.riviera_export_sim" -value "7" -objects $obj
 set_property -name "webtalk.vcs_export_sim" -value "7" -objects $obj
-set_property -name "webtalk.xcelium_export_sim" -value "1" -objects $obj
 set_property -name "webtalk.xsim_export_sim" -value "7" -objects $obj
 set_property -name "xpm_libraries" -value "XPM_CDC" -objects $obj
 
@@ -120,7 +119,7 @@ set obj [get_filesets sources_1]
 set files [list \
  [file normalize "${origin_dir}/vga_controller.srcs/sources_1/new/vga_800x600.sv" ]\
  [file normalize "${origin_dir}/vga_controller.srcs/sources_1/new/vga_sync_gen.sv" ]\
- [file normalize "${origin_dir}/vga_controller.srcs/sources_1/new/vga_top.sv" ]\
+ [file normalize "${origin_dir}/vga_controller.srcs/sources_1/new/svga_top.sv" ]\
 ]
 set added_files [add_files -fileset sources_1 $files]
 
@@ -136,14 +135,14 @@ set file "new/vga_sync_gen.sv"
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-set file "new/vga_top.sv"
+set file "new/svga_top.sv"
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
 
 # Set 'sources_1' fileset properties
 set obj [get_filesets sources_1]
-set_property -name "top" -value "vga_top" -objects $obj
+set_property -name "top" -value "svga_top" -objects $obj
 set_property -name "top_auto_set" -value "0" -objects $obj
 
 # Set 'sources_1' fileset object
@@ -197,7 +196,7 @@ set obj [get_filesets sim_1]
 # Set 'sim_1' fileset properties
 set obj [get_filesets sim_1]
 set_property -name "hbs.configure_design_for_hier_access" -value "1" -objects $obj
-set_property -name "top" -value "vga_top" -objects $obj
+set_property -name "top" -value "svga_top" -objects $obj
 set_property -name "top_lib" -value "xil_defaultlib" -objects $obj
 
 # Set 'utils_1' fileset object
@@ -227,6 +226,7 @@ if { $obj != "" } {
 
 }
 set obj [get_runs synth_1]
+set_property -name "needs_refresh" -value "1" -objects $obj
 set_property -name "strategy" -value "Vivado Synthesis Defaults" -objects $obj
 
 # set the current synth run
@@ -440,6 +440,7 @@ set_property -name "options.warn_on_violation" -value "1" -objects $obj
 
 }
 set obj [get_runs impl_1]
+set_property -name "needs_refresh" -value "1" -objects $obj
 set_property -name "strategy" -value "Vivado Implementation Defaults" -objects $obj
 set_property -name "steps.write_bitstream.args.readback_file" -value "0" -objects $obj
 set_property -name "steps.write_bitstream.args.verbose" -value "0" -objects $obj

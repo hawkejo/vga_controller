@@ -21,7 +21,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module vga_top(
+module svga_top(
     output [3:0] VGA_R,
     output [3:0] VGA_G,
     output [3:0] VGA_B,
