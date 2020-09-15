@@ -24,11 +24,23 @@
 module vga_top(
     output [3:0] VGA_R,
     output [3:0] VGA_G,
-    output [3:0] VGA_B
+    output [3:0] VGA_B,
+    output VGA_HS,
+    output VGA_VS,
+    input CLK100MHZ
     );
     
-    assign VGA_R = 1'b1;
-    assign VGA_G = 1'b1;
-    assign VGA_B = 1'b1;
+    wire [11:0] xCoord;
+    
+    vga_clock_sel sel0(
+        .hs(VGA_HS),
+        .vs(VGA_VS),
+        .xCoord(xCoord),
+        .clk100MHz(CLK100MHZ)
+    );
+    
+    assign VGA_R = {xCoord[9],  xCoord[6], xCoord[3], xCoord[0]};
+    assign VGA_G = {xCoord[10], xCoord[7], xCoord[4], xCoord[1]};
+    assign VGA_B = {xCoord[11], xCoord[8], xCoord[5], xCoord[2]};
     
 endmodule
