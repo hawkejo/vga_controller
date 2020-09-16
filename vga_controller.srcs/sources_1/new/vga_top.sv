@@ -10,6 +10,9 @@
 // Tool Versions: Vivado 2020.1
 // Description: Top module for interfacing with a specific FPGA board, in this
 //          case the Nexys 4 DDR.
+//          
+//          This module also provides the demo to verify the functionality of the
+//          design.
 // 
 // Dependencies: 100 MHz Clock, Xilinx Clock Generation IP creating a 25.175 MHz
 // 
@@ -27,7 +30,8 @@ module vga_top(
     output [3:0] VGA_B,
     output VGA_HS,
     output VGA_VS,
-    input CLK100MHZ
+    input CLK100MHZ,
+    input [0:0] SW
     );
     
     wire [11:0] xCoord;
@@ -36,7 +40,8 @@ module vga_top(
         .hs(VGA_HS),
         .vs(VGA_VS),
         .xCoord(xCoord),
-        .clk100MHz(CLK100MHZ)
+        .clk100MHz(CLK100MHZ),
+        .resolutionSel(SW)
     );
     
     assign VGA_R = {xCoord[9],  xCoord[6], xCoord[3], xCoord[0]};
