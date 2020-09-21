@@ -11,7 +11,7 @@
 // Description: A driver to generate the hsync and vsync signals and address
 //              individual pixels for the VGA interface per the VESA spec.
 //              
-//              This module implements the SVGA resolution (800x600@60Hz).
+//              This module implements the VGA resolution (640x480@60Hz).
 // 
 // Dependencies: A pixel clock for the specified resolution is required for the
 //          modules to work.
@@ -42,11 +42,11 @@ module vga_640x480(
     * Total Pixels (Counter max): 800 (640 + 16 + 96 + 48)
     *
     * Vertical timings
-    * Pixels:                     480
+    * Lines:                      480
     * Front Porch:                 10
     * Sync Width:                   2
     * Back Porch:                  33
-    * Total Pixels (Counter max): 525 (480 + 10 + 2 + 33) 
+    * Total Lines (Counter max):  525 (480 + 10 + 2 + 33) 
     */
     parameter VGA_H_RES = 640;
     parameter VGA_H_FP  =  16;

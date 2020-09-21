@@ -105,7 +105,6 @@ set_property -name "webtalk.modelsim_export_sim" -value "10" -objects $obj
 set_property -name "webtalk.questa_export_sim" -value "10" -objects $obj
 set_property -name "webtalk.riviera_export_sim" -value "10" -objects $obj
 set_property -name "webtalk.vcs_export_sim" -value "10" -objects $obj
-set_property -name "webtalk.xcelium_export_sim" -value "3" -objects $obj
 set_property -name "webtalk.xsim_export_sim" -value "10" -objects $obj
 set_property -name "xpm_libraries" -value "XPM_CDC" -objects $obj
 
@@ -121,6 +120,8 @@ set files [list \
  [file normalize "${origin_dir}/vga_controller.srcs/sources_1/new/vga_640x480.sv"] \
  [file normalize "${origin_dir}/vga_controller.srcs/sources_1/new/vga_sync_gen.sv"] \
  [file normalize "${origin_dir}/vga_controller.srcs/sources_1/new/vga_top.sv"] \
+ [file normalize "${origin_dir}/vga_controller.srcs/sources_1/new/xga_1024x768.sv"] \
+ [file normalize "${origin_dir}/vga_controller.srcs/sources_1/new/sxga_1280x1024.sv"] \
 ]
 add_files -norecurse -fileset $obj $files
 
@@ -150,6 +151,18 @@ set file "$origin_dir/vga_controller.srcs/sources_1/new/vga_top.sv"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
+
+set file "$origin_dir/vga_controller.srcs/sources_1/new/xga_1024x768.sv"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
+set_property -name "is_enabled" -value "0" -objects $file_obj
+
+set file "$origin_dir/vga_controller.srcs/sources_1/new/sxga_1280x1024.sv"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
+set_property -name "is_enabled" -value "0" -objects $file_obj
 
 
 # Set 'sources_1' fileset file properties for local files
